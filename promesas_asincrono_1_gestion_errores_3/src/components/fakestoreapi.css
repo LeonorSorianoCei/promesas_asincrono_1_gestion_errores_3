@@ -1,0 +1,17 @@
+.lista-item{
+  background-color: rgba(128, 128, 128, 0.46);
+  padding: 20px 40px;
+  margin: auto;
+}
+
+.lista-item{
+  margin: 5px;
+  font-family: "Madimi One", sans-serif;
+  font-size: 20px;
+}
+
+.lista-item:hover{
+  font-size: 22px;
+  color: rgb(21, 122, 143);
+  font-family: "Bebas Neue", sans-serif;
+}
