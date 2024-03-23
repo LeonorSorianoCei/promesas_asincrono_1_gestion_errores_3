@@ -3,6 +3,7 @@ import './ejemplo.css';
 
 function Ejemplo() {
   const [usuarios, setUsuarios] = useState([])
+  const { VITE_USERS } =import.meta.env
 
   useEffect (()=>{
     let controller= new AbortController()
@@ -15,7 +16,8 @@ function Ejemplo() {
     }
 
      //GESTION DE ERRORES EN REACT
-    fetch('https://jsonplaceholder.typicode.com/users', options)
+    // fetch('https://jsonplaceholder.typicode.com/users', options)
+     fetch( VITE_USERS , options)
     .then(res => res.json())
     .then(data => setUsuarios(data))
     .catch(err => console.log(err))

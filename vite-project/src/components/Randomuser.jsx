@@ -3,6 +3,7 @@ import './randomuser.css';
 
 function Randomuser() {
   const [usuarios, setUsuarios] = useState([]);
+  const { VITE_RANDOMUSER } =import.meta.env
 
   useEffect(() => {
     const controller = new AbortController();
@@ -15,7 +16,8 @@ function Randomuser() {
     };
 
      //GESTION DE ERRORES EN REACT
-    fetch('https://randomuser.me/api/', options)
+    // fetch('https://randomuser.me/api/', options)
+     fetch( VITE_RANDOMUSER , options)
       .then((res) => res.json())
       .then((data) => setUsuarios(data.results))
       .catch((err) => console.log('Error al obtener usuarios:', err))

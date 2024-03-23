@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './dd5.css';
 function Dnd5eapi() {
   const [classesInfo, setClassesInfo] = useState([]);
+  const { VITE_DND } =import.meta.env
+
 
   useEffect(() => {
     const controller = new AbortController();
@@ -15,7 +17,8 @@ function Dnd5eapi() {
 
     //GESTION DE ERRORES EN REACT
     // Obtener información específica de las clases desde la API de D&D 5th Edition
-    fetch('https://www.dnd5eapi.co/api/classes', options)
+    //fetch('https://www.dnd5eapi.co/api/classes', options)
+    fetch( VITE_DND , options)
       .then((res) => res.json())
       .then(async (data) => {
         const classData = await Promise.all(data.results.map(async (dndClass) => {

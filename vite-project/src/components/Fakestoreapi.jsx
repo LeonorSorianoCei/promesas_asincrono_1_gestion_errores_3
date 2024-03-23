@@ -3,6 +3,7 @@ import './fakestoreapi.css';
 
 function Fakestoreapi() {
   const [products, setProducts] = useState([]);
+  const { VITE_FAKESTOREAPI } =import.meta.env
 
   useEffect(() => {
     const controller = new AbortController();
@@ -16,7 +17,8 @@ function Fakestoreapi() {
 
      //GESTION DE ERRORES EN REACT
     // Obtener productos
-    fetch('https://fakestoreapi.com/products', options)
+    //fetch('https://fakestoreapi.com/products', options)
+    fetch( VITE_FAKESTOREAPI , options)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.log('Error al obtener productos:', err))

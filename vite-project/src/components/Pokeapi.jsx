@@ -3,6 +3,8 @@ import './poke.css';
 function Pokeapi() {
   const [bulbasaurData, setBulbasaurData] = useState(null);
 
+  const { VITE_POKEAPI } =import.meta.env
+
   useEffect(() => {
     const controller = new AbortController();
     const options = {
@@ -14,7 +16,8 @@ function Pokeapi() {
     };
 
      //GESTION DE ERRORES EN REACT
-    fetch('https://pokeapi.co/api/v2/pokemon/1', options)
+     //fetch('https://pokeapi.co/api/v2/pokemon/1', options)
+     fetch( VITE_POKEAPI , options)
       .then((res) => res.json())
       .then((data) => setBulbasaurData(data))
       .catch((err) => console.log('Error al obtener datos de la API:', err))

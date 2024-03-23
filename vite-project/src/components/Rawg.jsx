@@ -5,6 +5,7 @@ const API_KEY =' ';
 
 function Rawg() {
   const [games, setGames] = useState([]);
+  const { VITE_RAWG } =import.meta.env
 
   useEffect(() => {
     const controller = new AbortController();
@@ -17,8 +18,9 @@ function Rawg() {
       signal: controller.signal,
     };
  //GESTION DE ERRORES EN REACT
-    fetch('https://api.rawg.io/api/games?key='+ API_KEY, options)
-      .then((res) => res.json())
+ //fetch('https://api.rawg.io/api/games?key='+ API_KEY, options)
+ fetch(VITE_RAWG + API_KEY, options)
+    .then((res) => res.json())
       .then((data) => setGames(data.results))
       .catch((err) => console.log('Error al obtener datos de la API:', err))
       .finally(() => controller.abort());
